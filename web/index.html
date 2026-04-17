@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>leet_380</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@5.5.1/github-markdown-dark.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/marked@11/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/loader.js"></script>
+</head>
+<body>
+  <header>
+    <div class="brand">leet_380<span class="dot">·</span>OMP/MPI</div>
+    <div class="status" id="status">connecting…</div>
+  </header>
+
+  <main>
+    <aside class="sidebar">
+      <div class="sidebar-filters">
+        <select id="filter-topic">
+          <option value="">All topics</option>
+          <option value="omp">OpenMP</option>
+          <option value="mpi">MPI</option>
+          <option value="hybrid">Hybrid</option>
+        </select>
+      </div>
+      <ul id="problem-list"></ul>
+    </aside>
+
+    <section class="problem-pane">
+      <div id="problem-md" class="markdown-body"></div>
+    </section>
+
+    <section class="editor-pane">
+      <div class="toolbar">
+        <div class="tabs">
+          <button id="tab-mine" class="tab active">My code</button>
+          <button id="tab-solution" class="tab">Solution</button>
+        </div>
+        <span class="sp"></span>
+        <button id="run-btn" class="primary">Run tests</button>
+        <label class="nprocs-label" title="Override number of MPI processes">
+          nprocs <input type="number" id="nprocs-input" min="1" max="16" value="" placeholder="auto" style="width:52px" />
+        </label>
+        <label class="checkbox"><input type="checkbox" id="stop-first" />stop on first fail</label>
+        <button id="reset-btn">Reset</button>
+        <span id="pid-label" class="pid-label"></span>
+        <span id="compile-info" class="compile-info"></span>
+      </div>
+      <div id="editor" class="editor"></div>
+      <div id="results" class="results"></div>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

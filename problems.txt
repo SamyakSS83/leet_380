@@ -1,0 +1,74 @@
+# leet_380 problem list
+# Format: NNN slug | difficulty | topic | compile | description
+# compile: omp | mpi | hybrid
+
+# ── OpenMP (001-025) ─────────────────────────────────────────────────────────
+001 parallel_sum                 | Easy   | omp  | Parallel reduction sum of an array
+002 parallel_dot_product         | Easy   | omp  | Parallel dot product of two vectors
+003 parallel_matrix_vector       | Easy   | omp  | Parallel matrix-vector multiplication
+004 parallel_histogram           | Easy   | omp  | Parallel histogram with atomic updates
+005 monte_carlo_pi_omp           | Easy   | omp  | Monte Carlo Pi estimation with reduction
+006 parallel_prefix_scan         | Medium | omp  | Parallel prefix sum (inclusive scan)
+007 parallel_matrix_multiply     | Medium | omp  | Parallel matrix multiplication (tiled)
+008 parallel_min_max_index       | Medium | omp  | Parallel min and max with their indices
+009 false_sharing_fix            | Medium | omp  | Diagnose and eliminate false sharing
+010 parallel_stencil_1d          | Medium | omp  | 1D heat equation stencil (Jacobi)
+011 parallel_stencil_2d          | Medium | omp  | 2D heat equation stencil (Jacobi)
+012 omp_schedule_clauses         | Medium | omp  | Implement loop with best schedule policy
+013 omp_tasks_fibonacci          | Medium | omp  | Parallel Fibonacci using OMP tasks
+014 omp_locks_fine_grained       | Medium | omp  | Fine-grained locking for concurrent map
+015 parallel_merge_sort          | Hard   | omp  | Parallel merge sort using tasks
+016 parallel_quicksort           | Hard   | omp  | Parallel quicksort using tasks
+017 parallel_bfs_omp             | Hard   | omp  | Parallel BFS (level-synchronous)
+018 parallel_sieve               | Hard   | omp  | Parallel sieve of Eratosthenes
+019 parallel_word_count          | Medium | omp  | Parallel word count with thread-local maps
+020 omp_reduction_custom         | Medium | omp  | Custom reduction (max subarray sum)
+021 parallel_floyd_warshall      | Hard   | omp  | Parallel Floyd-Warshall APSP
+022 omp_nested_parallelism       | Medium | omp  | Nested parallel regions correctness
+023 parallel_saxpy               | Easy   | omp  | SIMD-friendly parallel SAXPY
+024 parallel_sparse_matvec       | Hard   | omp  | Parallel sparse matrix-vector (CSR)
+025 parallel_radix_sort          | Hard   | omp  | Parallel radix sort
+
+# ── MPI (026-055) ────────────────────────────────────────────────────────────
+026 mpi_hello_world              | Easy   | mpi  | Rank/size hello world
+027 mpi_ping_pong                | Easy   | mpi  | Point-to-point ping-pong latency
+028 mpi_broadcast                | Easy   | mpi  | Implement broadcast with point-to-point
+029 mpi_scatter_gather           | Easy   | mpi  | Scatter array, compute local sum, gather
+030 mpi_reduce_sum               | Easy   | mpi  | Parallel sum with MPI_Reduce
+031 mpi_allreduce_dot            | Easy   | mpi  | Distributed dot product with Allreduce
+032 mpi_prefix_scan              | Medium | mpi  | Distributed exclusive prefix sum (Scan)
+033 mpi_distributed_matrix_vector| Medium | mpi  | Row-distributed matrix-vector product
+034 mpi_ring_communication       | Medium | mpi  | Token ring: pass value around all ranks
+035 mpi_nonblocking_overlap      | Medium | mpi  | Non-blocking send/recv with computation overlap
+036 mpi_derived_struct           | Medium | mpi  | Send struct using MPI derived datatype
+037 mpi_cartesian_topology       | Medium | mpi  | 2D cartesian topology stencil halo exchange
+038 mpi_stencil_1d               | Medium | mpi  | 1D domain-decomposed Jacobi stencil
+039 mpi_histogram                | Medium | mpi  | Distributed histogram with Allreduce
+040 mpi_monte_carlo_pi           | Easy   | mpi  | Monte Carlo Pi with MPI_Reduce
+041 mpi_gather_stats             | Medium | mpi  | Gather local stats, compute global percentile
+042 mpi_alltoall_transpose       | Hard   | mpi  | Matrix transpose via MPI_Alltoall
+043 mpi_reduce_scatter           | Hard   | mpi  | Segmented reduction with Reduce_scatter
+044 mpi_parallel_sort            | Hard   | mpi  | Parallel sample sort across ranks
+045 mpi_bfs                      | Hard   | mpi  | Distributed BFS with frontier exchange
+046 mpi_word_count               | Medium | mpi  | Distributed word count (scatter text)
+047 mpi_matrix_multiply          | Hard   | mpi  | Cannon's algorithm distributed matmul
+048 mpi_one_sided_rma            | Hard   | mpi  | One-sided communication (MPI_Put/Get)
+049 mpi_io_write                 | Medium | mpi  | Parallel file write with MPI I/O
+050 mpi_load_balance_dynamic     | Hard   | mpi  | Work stealing / dynamic load balance
+051 mpi_reduce_custom_op         | Medium | mpi  | Custom MPI_Op (argmax with index)
+052 mpi_gather_variable          | Medium | mpi  | Variable-length gather (Gatherv)
+053 mpi_broadcast_tree           | Hard   | mpi  | Implement tree broadcast from scratch
+054 mpi_reduce_tree              | Hard   | mpi  | Implement tree reduce from scratch
+055 mpi_distributed_sum_verify   | Medium | mpi  | Verify distributed partial sums consistency
+
+# ── Hybrid OMP+MPI (056-065) ─────────────────────────────────────────────────
+056 hybrid_hello_world           | Easy   | hybrid | Hybrid rank/thread hello world
+057 hybrid_parallel_sum          | Easy   | hybrid | Hybrid sum: MPI reduce + OMP reduction
+058 hybrid_matrix_multiply       | Hard   | hybrid | Hybrid distributed+threaded matmul
+059 hybrid_stencil_1d            | Medium | hybrid | Hybrid 1D stencil: MPI halos + OMP sweep
+060 hybrid_monte_carlo_pi        | Easy   | hybrid | Hybrid Monte Carlo Pi
+061 hybrid_word_count            | Medium | hybrid | Hybrid word count
+062 hybrid_prefix_scan           | Hard   | hybrid | Hybrid prefix scan
+063 hybrid_bfs                   | Hard   | hybrid | Hybrid BFS: MPI frontiers + OMP expand
+064 hybrid_floyd_warshall        | Hard   | hybrid | Hybrid Floyd-Warshall APSP
+065 hybrid_reduction_custom      | Medium | hybrid | Hybrid custom reduction (global min-index)
