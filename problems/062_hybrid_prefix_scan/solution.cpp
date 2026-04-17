@@ -10,10 +10,8 @@ std::vector<double> hybrid_prefix_scan(const std::vector<double>& local_data) {
     int n = (int)local_data.size();
     std::vector<double> result(n);
 
-    // Phase 1: OMP local exclusive prefix scan
-    // Serial exclusive scan (parallel prefix is complex; use serial for correctness)
-    #pragma omp single
-    {
+    // Phase 1: local exclusive prefix scan (serial for correctness and simplicity)
+    if (n > 0) {
         result[0] = 0.0;
         for (int i = 1; i < n; i++)
             result[i] = result[i-1] + local_data[i-1];

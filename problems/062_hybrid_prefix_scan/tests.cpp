@@ -10,6 +10,7 @@ std::vector<double> hybrid_prefix_scan(const std::vector<double>& local_data);
 // Serial global exclusive prefix sum
 static std::vector<double> serial_excl_prefix(const std::vector<double>& v) {
     std::vector<double> out(v.size());
+    if (v.empty()) return out;
     out[0] = 0.0;
     for (size_t i = 1; i < v.size(); i++) out[i] = out[i-1] + v[i-1];
     return out;
@@ -151,6 +152,22 @@ int main(int argc, char** argv) {
             double expected_last = total_sum - full.back();
             ASSERT_APPROX(result.back(), expected_last);
         }
+    });
+
+    // Test 11: empty local chunk should return empty local output
+    RUN_TEST("empty local chunk returns empty output", [&]() {
+        std::vector<double> local;
+        auto res = hybrid_prefix_scan(local);
+        ASSERT_TRUE(res.empty(), "empty local input should produce empty local output");
+    });
+
+    // Test 12: one element per rank behaves like global prefix over rank values
+    RUN_TEST("single element per rank", [&]() {
+        std::vector<double> local = {(double)(rank + 1)};  // 1,2,3,... by rank
+        auto res = hybrid_prefix_scan(local);
+        ASSERT_TRUE((int)res.size() == 1, "expected one local result");
+        double expected = (double)(rank * (rank + 1) / 2);
+        ASSERT_APPROX(res[0], expected);
     });
 
     MPI_Finalize();

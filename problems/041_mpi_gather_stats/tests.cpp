@@ -109,6 +109,18 @@ int main(int argc, char** argv) {
         }
     });
 
+    // Test 9: all ranks empty => rank 0 should get zeroed stats
+    RUN_TEST("all ranks empty", [&]() {
+        std::vector<double> local;
+        Stats s = gather_stats(local);
+        if (rank == 0) {
+            ASSERT_APPROX(s.min, 0.0);
+            ASSERT_APPROX(s.max, 0.0);
+            ASSERT_APPROX(s.sum, 0.0);
+            ASSERT_EQ(s.count, 0LL);
+        }
+    });
+
     MPI_Finalize();
     if (rank == 0) print_results();
     return 0;

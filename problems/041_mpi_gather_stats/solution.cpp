@@ -23,7 +23,9 @@ Stats gather_stats(const std::vector<double>& local_data) {
     MPI_Reduce(&local_sum,   &global_sum,   1, MPI_DOUBLE,    MPI_SUM, 0, MPI_COMM_WORLD);
     MPI_Reduce(&local_count, &global_count, 1, MPI_LONG_LONG, MPI_SUM, 0, MPI_COMM_WORLD);
 
-    if (rank == 0)
+    if (rank == 0) {
+        if (global_count == 0) return Stats{};
         return Stats{global_min, global_max, global_sum, global_count};
+    }
     return Stats{};
 }
