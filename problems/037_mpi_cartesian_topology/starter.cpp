@@ -22,8 +22,13 @@ std::vector<double> mpi_cart_halo(int local_N) {
     int rank;
     MPI_Comm_rank(cart_comm, &rank);
     int W = local_N + 2;
-    std::vector<double> grid(W * W, (double)rank);
-    // Interior cells: set to rank, halos start as 0
+    std::vector<double> grid(W * W, 0.0);
+    // Interior cells set to rank, halos start as 0.
+    for (int i = 1; i <= local_N; i++) {
+        for (int j = 1; j <= local_N; j++) {
+            grid[i * W + j] = (double)rank;
+        }
+    }
     halo_exchange_2d(grid, local_N, cart_comm);
     MPI_Comm_free(&cart_comm);
     return grid;
